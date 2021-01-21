@@ -15,6 +15,11 @@ io.on('connection', client => {
     client.on('disconnect', () => { 
         console.log('User offline')
      });
+
+     client.on('Message', ( payload ) => {
+        console.log(`Message from ${payload.name}`);
+        io.emit('Message', { admin: 'New message' });
+     });
   });
 
 //Public path
