@@ -7,20 +7,9 @@ const app = express();
 
 // Node Server
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+module.exports.io = require('socket.io')(server);
+require('./sockets/socket');
 
-//Socket Messages
-io.on('connection', client => {
-    console.log('User online')
-    client.on('disconnect', () => { 
-        console.log('User offline')
-     });
-
-     client.on('Message', ( payload ) => {
-        console.log(`Message from ${payload.name}`);
-        io.emit('Message', { admin: 'New message' });
-     });
-  });
 
 //Public path
 const publicPath = path.resolve( __dirname, 'public' );
