@@ -13,9 +13,7 @@ io.on('connection', client => {
      });
 
      client.on('emitir-mensaje', ( payload ) => {
-      //Emite a todos los usuarios conectados  
-      //io.emit('nuevo-mensaje', payload);
-      //Emite a todos los usuarios conectados menos al que lo emitio
+      //console.log(payload)
       client.broadcast.emit('nuevo-mensaje', payload);
      });
   });
